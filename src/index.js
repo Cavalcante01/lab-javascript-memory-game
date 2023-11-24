@@ -27,14 +27,17 @@ const cards = [
 
 const memoryGame = new MemoryGame(cards);
 
+let card1;
+let card2;
+let cardCounter = 0;
+
 window.addEventListener('load', (event) => {
   let html = '';
-  memoryGame.cards.forEach((pic) => {
-    html += `
-      <div class="card" data-card-name="${pic.name}">
-        <div class="back" name="${pic.img}"></div>
-        <div class="front" style="background: url(img/${pic.img}) no-repeat"></div>
-      </div>
+  memoryGame.cards.forEach((characters) => {
+    html += `<div class="card" data-card-name="${characters.name}">
+    <div class="back" name="${characters.img}"></div>
+    <div class="front" style="background: url(img/${characters.img}) no-repeat"></div>
+  </div>
     `;
   });
 
@@ -44,8 +47,48 @@ window.addEventListener('load', (event) => {
   // Bind the click event of each element to a function
   document.querySelectorAll('.card').forEach((card) => {
     card.addEventListener('click', () => {
-      TODO: write some code here
+      // TODO: write some code here
       console.log(`Card clicked: ${card}`);
+      cardCounter++;
+      if (cardCounter === 1) {
+        card.classList.toggle("turned");
+        card1 = card;
+      } else if (cardCounter === 2) {
+        card.classList.toggle("turned");
+        card2 = card;
+        if (
+          memoryGame.checkIfPair(
+            card1.getAttribute("data-card-name"),
+            card2.getAttribute("data-card-name")
+          ) === true
+        ) {
+          cardCounter = 0;
+          setTimeout(() => {
+            alert("matched!!!");
+          }, 1000);
+        } else {
+          setTimeout(() => {
+            card1.classList.toggle("turned");
+            card2.classList.toggle("turned");
+            cardCounter = 0;
+          }, 1000);
+        }
+        updatingScore();
+        updatingGuessed();
+        userWon();
+      }
     });
   });
 });
+
+function updatingScore() {
+  document.getElementById("pairs-clicked").innerText = memoryGame.pairsClicked;
+}
+
+function updatingGuessed() {
+  document.getElementById("pairs-guessed").innerText = memoryGame.pairsGuessed;
+}
+
+function userWon() {
+  if (memoryGame.checkIfFinished()) alert("You Won the Memory Game. ");
+}

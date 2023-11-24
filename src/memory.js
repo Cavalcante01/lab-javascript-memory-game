@@ -12,7 +12,7 @@ class MemoryGame {
     // ... write your code here
     if (this.cards === undefined) return undefined;
     this.cards = this.cards.sort(function () {
-      return Math.random() - 0.5;
+      return Math.random() - 0.3;
     });
   
   }
