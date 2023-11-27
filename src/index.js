@@ -38,6 +38,7 @@ window.addEventListener('load', (event) => {
     <div class="back" name="${characters.img}"></div>
     <div class="front" style="background: url(img/${characters.img}) no-repeat"></div>
   </div>
+
     `;
   });
 
@@ -48,8 +49,7 @@ window.addEventListener('load', (event) => {
   document.querySelectorAll('.card').forEach((card) => {
     card.addEventListener('click', () => {
       // TODO: write some code here
-      console.log(`Card clicked: ${card}`);
-      cardCounter++;
+     
       if (cardCounter === 1) {
         card.classList.toggle("turned");
         card1 = card;
