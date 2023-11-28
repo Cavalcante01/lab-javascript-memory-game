@@ -35,11 +35,10 @@ window.addEventListener('load', (event) => {
   let html = '';
   memoryGame.cards.forEach((characters) => {
     html += `<div class="card" data-card-name="${characters.name}">
-    <div class="back" name="${characters.img}"></div>
-    <div class="front" style="background: url(img/${characters.img}) no-repeat"></div>
-  </div>
-
-    `;
+      <div class="back" name="${characters.img}"></div>
+       <div class="front" style="background: url(img/${characters.img}) no-repeat"></div>
+     </div>
+    `
   });
 
   // Add all the divs to the HTML
@@ -49,7 +48,7 @@ window.addEventListener('load', (event) => {
   document.querySelectorAll('.card').forEach((card) => {
     card.addEventListener('click', () => {
       // TODO: write some code here
-     
+      cardCounter++;
       if (cardCounter === 1) {
         card.classList.toggle("turned");
         card1 = card;

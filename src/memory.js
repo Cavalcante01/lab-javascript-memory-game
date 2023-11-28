@@ -12,7 +12,7 @@ class MemoryGame {
     // ... write your code here
     if (this.cards === undefined) return undefined;
     this.cards = this.cards.sort(function () {
-      return Math.random() - 0.3;
+      return Math.random() - 0.5;
     });
   
   }
@@ -31,12 +31,12 @@ class MemoryGame {
 
   checkIfFinished() {
     // ... write your code here
+    if(this.pairsGuessed * 2 === this.cards.length){
+      return true;
+      }
+      return false;
+       
+      }
+   }
   
-    return this.pairsGuessed * 2 === this.cards.length;
-  }
-}
-    
-    
-  
-  
-  
+
