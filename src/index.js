@@ -32,21 +32,21 @@ let card2;
 let cardCounter = 0;
 
 window.addEventListener('load', (event) => {
-  let html = '';
+  let html = " ";
   memoryGame.cards.forEach((characters) => {
     html += `<div class="card" data-card-name="${characters.name}">
       <div class="back" name="${characters.img}"></div>
        <div class="front" style="background: url(img/${characters.img}) no-repeat"></div>
      </div>
-    `
+    `;
   });
 
   // Add all the divs to the HTML
-  document.querySelector('#memory-board').innerHTML = html;
+  document.querySelector("#memory-board").innerHTML = html;
 
   // Bind the click event of each element to a function
-  document.querySelectorAll('.card').forEach((card) => {
-    card.addEventListener('click', () => {
+  document.querySelectorAll(".card").forEach((card) => {
+    card.addEventListener("click", () => {
       // TODO: write some code here
       cardCounter++;
       if (cardCounter === 1) {
